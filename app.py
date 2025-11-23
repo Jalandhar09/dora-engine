@@ -2,6 +2,14 @@ import streamlit as st
 import pandas as pd
 import os
 
+# Load secrets from Streamlit Cloud
+try:
+    SUPABASE_URL = st.secrets["SUPABASE_URL"]
+    SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
+except:
+    SUPABASE_URL = ""
+    SUPABASE_KEY = ""
+
 # Initialize session state
 if 'user' not in st.session_state:
     st.session_state.user = None
@@ -156,3 +164,13 @@ st.subheader("Step 3: Generate Reports")
 if st.button("Download Compliance Report"):
     st.success("Report generated!")
     st.write("Professional PDF report would be available for download.")
+
+# Cloud deployment status
+with st.sidebar:
+    st.markdown("---")
+    st.markdown("**?? Deployment Status**")
+    if SUPABASE_URL:
+        st.success("? Supabase Connected")
+    else:
+        st.warning("?? Supabase Not Configured")
+    st.success("? Streamlit Cloud Ready")

@@ -1,1 +1,6 @@
-server.headless = true
+base="light"
+primaryColor="#3A7AFE"
+backgroundColor="#F7F9FC"
+secondaryBackgroundColor="#FFFFFF"
+textColor="#1A1A1A"
+font="Inter"
